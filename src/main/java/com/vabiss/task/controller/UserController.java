@@ -2,8 +2,6 @@ package com.vabiss.task.controller;
 
 import com.vabiss.task.model.request.LoginRequestModel;
 import com.vabiss.task.model.request.SignUpRequestModel;
-import com.vabiss.task.model.response.LoginResponseModel;
-import com.vabiss.task.model.response.UserResponseModel;
 import com.vabiss.task.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +34,6 @@ public class UserController {
 
     @GetMapping("/account/me")
     ResponseEntity showMe() {
-
-        return ResponseEntity.ok(new UserResponseModel("username"));
+        return ResponseEntity.ok(userService.getCurrentUser());
     }
 }

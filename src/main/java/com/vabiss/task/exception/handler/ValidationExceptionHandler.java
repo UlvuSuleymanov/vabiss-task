@@ -1,5 +1,6 @@
-package com.vabiss.task.exception;
+package com.vabiss.task.exception.handler;
 
+import com.vabiss.task.exception.CustomFieldError;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;

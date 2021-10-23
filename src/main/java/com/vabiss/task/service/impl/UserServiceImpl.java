@@ -9,6 +9,7 @@ import com.vabiss.task.repository.UserRepository;
 import com.vabiss.task.service.JwtService;
 import com.vabiss.task.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
     public LoginResponseModel login(LoginRequestModel loginRequestModel) {
         Optional<User> user = userRepository.findByUsername(loginRequestModel.getUsername());
         if(!user.isPresent() || !user.get().getPassword().equals(loginRequestModel.getPassword()))
-            throw new EntityNotFoundException("İstifadəçi adı və ya şifrə yanlışdır");
+            throw new AuthenticationCredentialsNotFoundException("Istifadəçi adı və ya şifrə yanlışdır");
         return new LoginResponseModel(jwtService.generateAccessToken(user.get().getId()));
 
     }

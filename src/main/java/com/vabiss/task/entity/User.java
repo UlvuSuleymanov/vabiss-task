@@ -1,5 +1,6 @@
 package com.vabiss.task.entity;
 
+import com.vabiss.task.model.request.SignUpRequestModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,8 @@ public class User {
     private String username;
     private String password;
 
+    public User(SignUpRequestModel signUpRequestModel){
+        username=signUpRequestModel.getUsername();
+        password=signUpRequestModel.getPassword();
+    }
 }
